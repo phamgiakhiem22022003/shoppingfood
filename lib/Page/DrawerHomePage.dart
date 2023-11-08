@@ -95,6 +95,28 @@ class _DrawerHomePageState extends State<DrawerHomePage> {
                   },
                 ),
               ),
+
+              //Profile
+              Padding(
+                padding: EdgeInsets.only(left: 25.0),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.person,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    "Profile",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
             ],
           ),
 
