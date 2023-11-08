@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+
 class CheckOutPage extends StatelessWidget {
   const CheckOutPage({super.key});
 
@@ -321,7 +322,9 @@ class CheckOutPage extends StatelessWidget {
 
               SizedBox(height: 30),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, '/PaymentScreen');
+                },
                 child: Container(
                   height: 50,
                   width: 400,

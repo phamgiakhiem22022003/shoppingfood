@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shoppingfood/Page/CheckOutPage.dart';
 import 'package:shoppingfood/Page/Home_page.dart';
 import 'package:shoppingfood/Page/ItemsPage.dart';
+import 'package:shoppingfood/Page/PayMentScreen.dart';
 import 'package:shoppingfood/Page/login_page.dart';
 import 'package:shoppingfood/splash_screen/splash_screen.dart';
 
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         '/logout': (context) => LoginPage(),
         '/CheckOut': (context) => CheckOutPage(),
         '/Continue Shopping': (context) => HomePage(),
+        '/PaymentScreen': (context) => PaymentScreen(),
       },
 
       title: 'Flutter Demo',
