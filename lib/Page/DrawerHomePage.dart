@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoppingfood/Page/Profile.dart';
 
 class DrawerHomePage extends StatefulWidget {
   const DrawerHomePage({super.key});
@@ -8,6 +9,7 @@ class DrawerHomePage extends StatefulWidget {
 }
 
 class _DrawerHomePageState extends State<DrawerHomePage> {
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -113,7 +115,7 @@ class _DrawerHomePageState extends State<DrawerHomePage> {
                     ),
                   ),
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
                   },
                 ),
               ),
