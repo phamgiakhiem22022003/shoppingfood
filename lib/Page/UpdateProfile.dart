@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -14,9 +15,52 @@ class UpdateProfileScreen extends StatefulWidget {
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
   final currentUser = FirebaseAuth.instance.currentUser!;
+  final userCollection = FirebaseFirestore.instance.collection("User");
 
   Future<void> editField(String field) async {
+    String newValue = "";
+    await showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          backgroundColor: Colors.grey[900],
+          title: Text(
+            "Edit $field",
+            style: TextStyle(
+                color: Colors.white
+            ),
+          ),
+          content: TextField(
+            autofocus: true,
+            style: TextStyle(color: Colors.white),
+            decoration: InputDecoration(
+              hintText: "Enter New $field",
+              hintStyle: TextStyle(color: Colors.grey),
+            ),
+            onChanged: (value) {
+              newValue = value;
+            },
+          ),
+          actions: [
+            //cancel Button
+            TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text("Cancel", style: TextStyle(color: Colors.white),
+                ),
+            ),
 
+            //save Button
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(newValue),
+              child: Text("Save", style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ],
+        ),
+    );
+
+    if (newValue.trim().length > 0) {
+      await userCollection.doc(currentUser.email).update({field: newValue});
+    }
   }
 
   @override
@@ -78,7 +122,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
             onPressed: () => editField("username"),
           ),
 
-
           //bio
           MyTextBox(
             text: "Empty bio",
@@ -88,9 +131,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
 
           //user posts
-
-
-
 
         ],
       ),
