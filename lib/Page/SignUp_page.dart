@@ -135,7 +135,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     if (user != null) {
       print("User is sucessfully created");
-      Navigator.pushNamedAndRemoveUntil(context, '/home',(route) => false);
+      Navigator.pushNamedAndRemoveUntil(context, '/Home',(route) => false);
     }
     else{
       print("Some error happend");

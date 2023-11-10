@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:shoppingfood/Page/UpdateProfile.dart';
+import 'package:shoppingfood/widget/ProfileMenu.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +48,32 @@ class ProfileScreen extends StatelessWidget {
           padding: EdgeInsets.all(25),
           child: Column(
             children: [
-              SizedBox(
-                width: 120,
-                height: 120,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: Image(image: AssetImage("assets/img/profile.jpg"),),
-                ),
+              Stack(
+                children: [
+                  SizedBox(
+                    width: 120,
+                    height: 120,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(100),
+                      child: Image(image: AssetImage("assets/img/profile.jpg"),),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: Container(
+                        width: 35,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: Colors.orangeAccent,
+                        ),
+                        child: Icon(
+                          LineAwesomeIcons.alternate_pencil,
+                          color: Colors.black,
+                          size: 20)),
+                  )
+                ],
               ),
 
               //Ten Profile
@@ -78,7 +100,9 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(
                 width: 200,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateProfileScreen()));
+                  },
                   child: Text(
                       "Edit Profile",
                     style: TextStyle(
@@ -95,18 +119,29 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
               SizedBox(height: 30),
               Divider(),
               SizedBox(height: 10),
 
               //Menu
-              ProfileMenuWidget(),
-              ProfileMenuWidget(),
-              ProfileMenuWidget(),
-              ProfileMenuWidget(),
-              ProfileMenuWidget(),
-
+              ProfileMenuWidget( //Setting
+                  title: "Setting",
+                  icon: LineAwesomeIcons.cog,
+                  onPress: () {}),
+              ProfileMenuWidget( //Billing Details
+                  title: "Billing Details",
+                  icon: LineAwesomeIcons.wallet,
+                  onPress: () {}),
+              ProfileMenuWidget(
+                  title: "User Management",
+                  icon: LineAwesomeIcons.user_check,
+                  onPress: () {}),
+              Divider(color: Colors.grey),
+              SizedBox(height: 10),
+              ProfileMenuWidget(
+                  title: "Infomation",
+                  icon: LineAwesomeIcons.info,
+                  onPress: () {}),
             ],
           ),
         ),
@@ -115,38 +150,3 @@ class ProfileScreen extends StatelessWidget {
   }
 }
 
-class ProfileMenuWidget extends StatelessWidget {
-  const ProfileMenuWidget({
-    Key? key,
-  }) : super(key:key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      leading: Container(
-        width: 40, height: 40,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100),
-          color: Colors.orangeAccent,
-        ),
-        child: Icon(Icons.manage_history, color: Colors.black),
-      ),
-      title: Text(
-          "Setting",
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: Colors.deepOrangeAccent,
-        ),
-      ),
-      trailing: Container(
-        width: 40, height: 40,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100),
-          color: Colors.grey.shade300,
-        ),
-        child: Icon(Icons.arrow_forward_ios, color: Colors.black),
-      ),
-    );
-  }
-}
