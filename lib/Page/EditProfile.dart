@@ -5,62 +5,62 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:shoppingfood/Page/Profile.dart';
 import 'package:shoppingfood/widget/my_text_box.dart';
 
-class UpdateProfileScreen extends StatefulWidget {
-  const UpdateProfileScreen({super.key});
+class EditProfileScreen extends StatefulWidget {
+  const EditProfileScreen({super.key});
 
   @override
-  State<UpdateProfileScreen> createState() => _UpdateProfileScreenState();
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
 }
 
-class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
+class _EditProfileScreenState extends State<EditProfileScreen> {
 
-  final currentUser = FirebaseAuth.instance.currentUser!;
-  final userCollection = FirebaseFirestore.instance.collection("User");
+  // final currentUser = FirebaseAuth.instance.currentUser!;
+  // final userCollection = FirebaseFirestore.instance.collection("User");
 
   Future<void> editField(String field) async {
     String newValue = "";
     await showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          backgroundColor: Colors.grey[900],
-          title: Text(
-            "Edit $field",
-            style: TextStyle(
-                color: Colors.white
-            ),
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: Colors.grey[900],
+        title: Text(
+          "Edit $field",
+          style: TextStyle(
+              color: Colors.white
           ),
-          content: TextField(
-            autofocus: true,
-            style: TextStyle(color: Colors.white),
-            decoration: InputDecoration(
-              hintText: "Enter New $field",
-              hintStyle: TextStyle(color: Colors.grey),
-            ),
-            onChanged: (value) {
-              newValue = value;
-            },
-          ),
-          actions: [
-            //cancel Button
-            TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text("Cancel", style: TextStyle(color: Colors.white),
-                ),
-            ),
-
-            //save Button
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(newValue),
-              child: Text("Save", style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
         ),
+        content: TextField(
+          autofocus: true,
+          style: TextStyle(color: Colors.white),
+          decoration: InputDecoration(
+            hintText: "Enter New $field",
+            hintStyle: TextStyle(color: Colors.grey),
+          ),
+          onChanged: (value) {
+            newValue = value;
+          },
+        ),
+        actions: [
+          //cancel Button
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text("Cancel", style: TextStyle(color: Colors.white),
+            ),
+          ),
+
+          //save Button
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(newValue),
+            child: Text("Save", style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
     );
 
-    if (newValue.trim().length > 0) {
-      await userCollection.doc(currentUser.email).update({field: newValue});
-    }
+    // if (newValue.trim().length > 0) {
+    //   await userCollection.doc(currentUser.email).update({field: newValue});
+    // }
   }
 
   @override
@@ -96,17 +96,17 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
           ),
 
           SizedBox(height: 20),
-          Text(
-            currentUser.email!,
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.grey),
-          ),
+          // Text(
+          //   currentUser.email!,
+          //   textAlign: TextAlign.center,
+          //   style: TextStyle(color: Colors.grey),
+          // ),
 
           SizedBox(height: 50),
 
           //user Details
           Padding(
-              padding: EdgeInsets.only(left: 25.0),
+            padding: EdgeInsets.only(left: 25.0),
             child: Text(
               "My Details",
               style: TextStyle(

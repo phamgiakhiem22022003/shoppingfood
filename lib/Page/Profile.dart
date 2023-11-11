@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:shoppingfood/Page/UpdateProfile.dart';
+import 'package:shoppingfood/Page/EditProfile.dart';
 import 'package:shoppingfood/widget/ProfileMenu.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -101,7 +101,7 @@ class ProfileScreen extends StatelessWidget {
                 width: 200,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateProfileScreen()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfileScreen()));
                   },
                   child: Text(
                       "Edit Profile",

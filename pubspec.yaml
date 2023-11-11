@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   sliding_sheet: any
   line_awesome_flutter: ^2.0.0
+  carousel_slider: ^4.2.1
 
 
   firebase_core: any
@@ -83,6 +84,20 @@ flutter:
     - assets/img/zalo pay.png
     - assets/img/tich.png
     - assets/img/profile.jpg
+
+    - assets/img/burgurB.jpg
+    - assets/img/burgurG.jpg
+    - assets/img/burgurT.jpg
+
+    - assets/img/pizzaHS.jpg
+    - assets/img/pizzaPM.jpg
+    - assets/img/pizzaXX.jpg
+
+    - assets/img/pastaCuon.jpg
+    - assets/img/pastaSoi.jpg
+
+    - assets/img/steakBo.jpg
+    - assets/img/steakHeo.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

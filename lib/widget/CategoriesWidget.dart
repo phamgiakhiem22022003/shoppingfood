@@ -6,7 +6,7 @@ class CategoriesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    var tenCategory=['Hambergr','Pasta','Pizza', 'Steak'];
+    var tenCategory=['Hambergur','Pasta','Pizza', 'Steak'];
 
     return Column(
       children: [
